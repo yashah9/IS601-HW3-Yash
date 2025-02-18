@@ -25,8 +25,8 @@ def calculate_and_print(a, b, operation_name):
         print(f"The result of {a} {operation_name} {b} is equal to {result}")
     except InvalidOperation:
         print(f"Invalid number input: {a} or {b} is not a valid number.")
-    except ZeroDivisionError:
-        print("Error: Division by zero.")
+    # except ZeroDivisionError:
+    #     print("Error: Division by zero.")
     except ValueError as e:
         print(e)
     except Exception as e:
@@ -34,7 +34,7 @@ def calculate_and_print(a, b, operation_name):
 
 def main():
     if len(sys.argv) != 4:
-        print("Usage: python calculator_main.py <number1> <number2> <operation>")
+        print("Usage: python main.py <number1> <number2> <operation>")
         sys.exit(1)
 
     _, a, b, operation_name = sys.argv

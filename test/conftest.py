@@ -1,20 +1,23 @@
 # pylint: disable=missing-docstring, invalid-name, unnecessary-dunder-call
 from decimal import Decimal
 from faker import Faker
-from calculator.operations import add  # Only import add for now
+from calculator.operations import add, subtract, multiply
 
 fake = Faker()
 
 def generate_test_data(num_records):
-    # Define operation mapping for only the add operation
+    # Define operation mapping for add, subtract, and multiply operations
     operation_mappings = {
         'add': add,
+        'subtract': subtract,
+        'multiply': multiply,
     }
     # Generate test data
     for _ in range(num_records):
         a = Decimal(fake.random_number(digits=2))
         b = Decimal(fake.random_number(digits=2))
-        operation_name = 'add'  
+        # Randomly choose one of the operations from the mapping
+        operation_name = fake.random_element(elements=list(operation_mappings.keys()))
         operation_func = operation_mappings[operation_name]
         expected = operation_func(a, b)
         yield a, b, operation_name, operation_func, expected
