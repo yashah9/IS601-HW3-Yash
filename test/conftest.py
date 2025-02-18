@@ -16,7 +16,7 @@ def generate_test_data(num_records):
     # Generate test data
     for _ in range(num_records):
         a = Decimal(fake.random_number(digits=2))
-        b = Decimal(fake.random_number(digits=2))
+        b = Decimal(fake.random_number(digits=2)) if _ % 4 != 3 else Decimal(fake.random_number(digits=1))
         operation_name = fake.random_element(elements=list(operation_mappings.keys()))
         operation_func = operation_mappings[operation_name]
         expected = operation_func(a,b)
