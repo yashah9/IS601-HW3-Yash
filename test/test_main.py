@@ -11,9 +11,9 @@ from main import calculate_and_print  # Ensure this import matches your project 
                  marks=pytest.mark.skip(reason="Division tests are skipped")),
     pytest.param("1", "0", 'divide', "Cannot divide by zero", 
                  marks=pytest.mark.skip(reason="Division tests are skipped")),  # Adjusted for the actual error message
-    # ("9", "3", 'unknown', "Unknown operation: unknown"),  # Test for unknown operation
-    # ("a", "3", 'add', "Invalid number input: a or 3 is not a valid number."),  # Testing invalid number input
-    # ("5", "b", 'subtract', "Invalid number input: 5 or b is not a valid number.")  # Testing another invalid number input
+    ("9", "3", 'unknown', "Unknown operation: unknown"),  # Test for unknown operation
+    ("a", "3", 'add', "Invalid number input: a or 3 is not a valid number."),  # Testing invalid number input
+    ("5", "b", 'subtract', "Invalid number input: 5 or b is not a valid number.")  # Testing another invalid number input
 ])
 def test_calculate_and_print(a_string, b_string, operation_string,expected_string, capsys):
     calculate_and_print(a_string, b_string, operation_string)
