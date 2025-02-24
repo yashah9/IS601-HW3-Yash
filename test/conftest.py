@@ -1,7 +1,7 @@
 # pylint: disable=missing-docstring, invalid-name, unnecessary-dunder-call
 from decimal import Decimal
 from faker import Faker
-from calculator.operations import add  # Only import add for now
+from calculator.operations import add, subtract, multiply, divide  # Only import add for now
 
 fake = Faker()
 
@@ -9,6 +9,9 @@ def generate_test_data(num_records):
     # Define operation mapping for add, subtract, and multiply operations
     operation_mappings = {
         'add': add,
+        'subtract': subtract,
+        'multiply': multiply,
+        'divide': divide
     }
     # Generate test data
     for _ in range(num_records):
