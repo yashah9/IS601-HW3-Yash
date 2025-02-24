@@ -17,7 +17,7 @@ def generate_test_data(num_records):
     for _ in range(num_records):
         a = Decimal(fake.random_number(digits=2))
         b = Decimal(fake.random_number(digits=2))
-        operation_name = 'add'  
+        operation_name = 'add'
         operation_func = operation_mappings[operation_name]
         try:
             if operation_func is divide and b == Decimal('0'):
