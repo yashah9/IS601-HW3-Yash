@@ -1,26 +1,45 @@
+"""Command and CommandHandler class
+
+This module defines the Command abstract base class and the CommandHandler class,
+which manages command registration and execution.
+"""
+
 from abc import ABC, abstractmethod
 
 class Command(ABC):
+    """Abstract base class for commands."""
+
     @abstractmethod
     def execute(self):
-        pass
+        """Execute the command."""
 
 class CommandHandler:
+    """Class to manage command registration and execution."""
+
     def __init__(self):
+        """Initialize the CommandHandler with an empty command registry."""
         self.commands = {}
 
-    def register_command(self, command_name: str, command: Command):
-        self.commands[command_name] = command
+    def register_command(self, name, command):
+        """Register a command with a given name.
 
-    def execute_command(self, command_name: str):
-        """ Look before you leap (LBYL) - Use when its less likely to work
-        if command_name in self.commands:
-            self.commands[command_name].execute()
-        else:
-            print(f"No such command: {command_name}")
+        Args:
+            name (str): The name of the command.
+            command (Command): The command instance to register.
         """
-        """Easier to ask for forgiveness than permission (EAFP) - Use when its going to most likely work"""
-        try:
-            self.commands[command_name].execute()
-        except KeyError:
-            print(f"No such command: {command_name}")
+        self.commands[name] = command
+
+    def execute_command(self, command_name, *args):
+        """Execute a command by name, passing any arguments to it.
+
+        Args:
+            command_name (str): The name of the command to execute.
+            *args: Arguments to pass to the command's execute method.
+
+        Raises:
+            KeyError: If the command does not exist.
+        """
+        command = self.commands.get(command_name)
+        if command is not None:
+            return command.execute(*args)  # Pass the args to the command's execute method
+        raise KeyError(f"No such command: {command_name}")
