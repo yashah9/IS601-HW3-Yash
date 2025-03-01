@@ -2,6 +2,7 @@ astroid==3.3.5
 coverage==7.6.3
 dill==0.3.9
 exceptiongroup==1.2.2
+Faker==23.1.0
 flake8==7.1.1
 iniconfig==2.0.0
 isort==5.13.2
